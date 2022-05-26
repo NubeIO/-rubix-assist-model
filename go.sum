@@ -6,8 +6,6 @@ github.com/Masterminds/semver/v3 v3.1.1/go.mod h1:VPu/7SZ7ePZ3QOrcuXROw5FAcLl4a0
 github.com/NubeIO/nubeio-rubix-lib-helpers-go v0.2.7 h1:QKgcOjDkVujyAXWK+OysVFnQKzpZx335vGPG95UNXuI=
 github.com/NubeIO/nubeio-rubix-lib-helpers-go v0.2.7/go.mod h1:oLI6n9wuko0KIEzrLc8saOquiQvtMUUBrUjXf0TLDVQ=
 github.com/NubeIO/nubeio-rubix-lib-models-go v1.0.4/go.mod h1:A1BPuc3UpE1EF3ugdf+8QIIKTT8s3eK+pfUcheJX2JM=
-github.com/NubeIO/rubix-assist v0.0.0-20220525194208-3c4207aa12cc h1:pFFDKOm67dSMDt1tYe8VM4jbOew7O3kflXcE0q45RrM=
-github.com/NubeIO/rubix-assist v0.0.0-20220525194208-3c4207aa12cc/go.mod h1:d1RthgXwRaivz2rnu7nW8FsM3OBt1Cjj968U6nfKSxY=
 github.com/PuerkitoBio/purell v1.1.1 h1:WEQqlqaGbrPkxLJWfBwQmfEAE1Z7ONdDLqrN38tNFfI=
 github.com/PuerkitoBio/purell v1.1.1/go.mod h1:c11w/QuzBsJSee3cPx9rAFu61PvFxuPbtSwDGJws/X0=
 github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 h1:d+Bc7a5rLufV/sSk/8dngufqelfh6jnri85riMAaF/M=

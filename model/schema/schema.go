@@ -1,8 +1,8 @@
 package schema
 
 import (
-	"github.com/NubeIO/rubix-assist/model"
-	"github.com/NubeIO/rubix-assist/model/rubix"
+	"github.com/NubeIO/rubix-assist-model/model"
+	"github.com/NubeIO/rubix-assist-model/model/rubix"
 	cmap "github.com/orcaman/concurrent-map"
 	"reflect"
 	"strings"

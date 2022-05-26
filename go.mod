@@ -4,7 +4,6 @@ go 1.18
 
 require (
 	github.com/NubeIO/nubeio-rubix-lib-helpers-go v0.2.7
-	github.com/NubeIO/rubix-assist v0.0.0-20220525194208-3c4207aa12cc
 	github.com/orcaman/concurrent-map v1.0.0
 )
 
