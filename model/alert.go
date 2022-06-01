@@ -1,6 +1,8 @@
 package model
 
-import "time"
+import (
+	"time"
+)
 
 type Alert struct {
 	UUID      string     `json:"uuid" gorm:"primarykey"  get:"true" post:"true" patch:"true" delete:"true"`

@@ -1,33 +1,69 @@
 package model
 
-import "time"
-
-type Network struct {
-	UUID  string  `json:"uuid" gorm:"primary_key"`
-	Name  string  `json:"name"  gorm:"type:varchar(255);unique;not null"`
-	Hosts []*Host `json:"hosts" gorm:"constraint:OnDelete:CASCADE"`
-}
+import (
+	"github.com/NubeIO/lib-schema/schema"
+	"time"
+)
 
 type Host struct {
-	UUID                 string    `json:"uuid" gorm:"primaryKey"  get:"true" delete:"true"`
-	Name                 string    `json:"name"  gorm:"type:varchar(255);unique;not null" required:"true" get:"true" post:"true" patch:"true"`
+	UUID                 string    `json:"uuid" gorm:"primaryKey" `
+	Name                 string    `json:"name"  gorm:"type:varchar(255);unique;not null"  `
 	NetworkUUID          string    `json:"network_uuid,omitempty" gorm:"TYPE:varchar(255) REFERENCES networks;not null;default:null"`
+	Enable               *bool     `json:"enable"`
 	ProductType          string    //edge28, rubix-compute
-	IP                   string    `json:"ip" required:"true" default:"192.168.15.10" get:"true" post:"true" patch:"true"`
-	Port                 int       `json:"port" required:"true" default:"22" get:"true" post:"true" patch:"true"`
-	HTTPS                *bool     `json:"https" get:"true" post:"true" patch:"true"`
-	Username             string    `json:"username" required:"true" default:"admin" get:"true" post:"true" patch:"true"`
-	Password             string    `json:"password" required:"true" get:"false" post:"true" patch:"true"`
-	RubixPort            int       `json:"rubix_port" required:"true" default:"1660" get:"true" post:"true" patch:"true"`
-	RubixUsername        string    `json:"rubix_username" required:"true" default:"admin" get:"true" post:"true" patch:"true"`
-	RubixPassword        string    `json:"rubix_password" required:"true" post:"true" patch:"true"`
-	BiosPort             int       `json:"bios_port" required:"true" default:"1660" get:"true" post:"true" patch:"true"`
-	IsLocalhost          *bool     `json:"is_localhost" get:"true" post:"true" patch:"true"`
-	PingEnable           *bool     `json:"ping_enable" get:"true" post:"true" patch:"false"`
-	PingFrequency        int       `json:"ping_frequency" get:"true" post:"true" patch:"false"`
-	IsOffline            *bool     `json:"is_offline" get:"true" post:"false" patch:"false"`
-	OfflineCount         uint      `json:"offline_count" get:"true" post:"false" patch:"false"`
+	IP                   string    `json:"ip"`
+	Port                 int       `json:"port"`
+	HTTPS                *bool     `json:"https"`
+	Username             string    `json:"username"`
+	Password             string    `json:"password"`
+	RubixPort            int       `json:"rubix_port"`
+	RubixUsername        string    `json:"rubix_username"`
+	RubixPassword        string    `json:"rubix_password" `
+	RubixHTTPS           *bool     `json:"rubix_https" `
+	IsLocalhost          *bool     `json:"is_localhost" `
+	PingEnable           *bool     `json:"ping_enable"`
+	PingFrequency        int       `json:"ping_frequency"`
+	IsOffline            bool      `json:"is_offline"`
+	OfflineCount         uint      `json:"offline_count"`
 	RubixToken           string    `json:"-"`
 	RubixTokenLastUpdate time.Time `json:"-"`
 	BiosToken            string    `json:"-"`
+}
+
+type NetworkUUID struct {
+	Type     string `json:"type" default:"string"`
+	Required bool   `json:"required" default:"true"`
+	Binding  string `json:"binding" default:"networks/uuid"`
+}
+
+type IsOffline struct {
+	Type     bool `json:"type" default:"bool"`
+	ReadOnly bool `json:"read_only"`
+}
+
+type OfflineCount struct {
+	Type     int  `json:"type" default:"int"`
+	ReadOnly bool `json:"read_only"`
+}
+
+type HostSchema struct {
+	UUID         schema.UUID        `json:"uuid"`
+	Name         schema.Name        `json:"name"`
+	Description  schema.Description `json:"description"`
+	Enable       schema.Enable      `json:"enable"`
+	Product      schema.Product     `json:"product"`
+	NetworkUUID  LocationUUID       `json:"network_uuid"`
+	IP           schema.IP          `json:"ip"`
+	Port         schema.Port        `json:"port"`
+	HTTPS        schema.HTTPS       `json:"https"`
+	Username     schema.Username    `json:"username"`
+	Password     schema.Password    `json:"password"`
+	IsOffline    schema.Password    `json:"is_offline"`
+	OfflineCount schema.Password    `json:"offline_count"`
+}
+
+func GetHostSchema() *HostSchema {
+	m := &HostSchema{}
+	schema.Set(m)
+	return m
 }
